@@ -4,7 +4,7 @@ import { ChatMessage } from './OpenAIStream.types';
 interface Props {
   apiToken: string;
   prompt: string;
-  onComplete: (response: string) => void;
+  onComplete: Function;
 }
 
 const OpenAIStream: React.FC<Props> = ({ apiToken, prompt, onComplete }) => {
@@ -54,7 +54,7 @@ const OpenAIStream: React.FC<Props> = ({ apiToken, prompt, onComplete }) => {
 
   return (
     <div>
-      {errorMessage && <div>Error: {errorMessage}</div>},
+      {errorMessage && <div>Error: {errorMessage}</div>}
       {messages.map((message) => (
         <div key={message.id} className={`message ${message.role}`}>
           <p>{message.content}</p>
